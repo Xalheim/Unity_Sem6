@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa5390690de186458c181e90bd6b57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMaterial: {fileID: 0}
+  platformMaterial: {fileID: 2100000, guid: 06208fd8c3d46344badccdc6a6fe59f5, type: 2}
   spawnPosition: {x: 5, y: 4, z: 0}
 --- !u!1 &73915280
 GameObject:
@@ -4329,8 +4329,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa5390690de186458c181e90bd6b57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMaterial: {fileID: 0}
-  spawnPosition: {x: 10, y: 2, z: 0}
+  platformMaterial: {fileID: 2100000, guid: 06208fd8c3d46344badccdc6a6fe59f5, type: 2}
+  spawnPosition: {x: 10, y: 4, z: 0}
 --- !u!1 &477248737
 GameObject:
   m_ObjectHideFlags: 0
@@ -7736,8 +7736,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa5390690de186458c181e90bd6b57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMaterial: {fileID: 0}
-  spawnPosition: {x: 10, y: 2, z: -5}
+  platformMaterial: {fileID: 2100000, guid: 06208fd8c3d46344badccdc6a6fe59f5, type: 2}
+  spawnPosition: {x: 10, y: 6, z: -5}
 --- !u!43 &1023023145
 Mesh:
   m_ObjectHideFlags: 0
@@ -16689,7 +16689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa5390690de186458c181e90bd6b57e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platformMaterial: {fileID: 0}
+  platformMaterial: {fileID: 2100000, guid: 06208fd8c3d46344badccdc6a6fe59f5, type: 2}
   spawnPosition: {x: 0, y: 2, z: 0}
 --- !u!43 &2097801906
 Mesh:

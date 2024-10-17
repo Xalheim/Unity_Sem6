@@ -10,10 +10,14 @@ public class Example : MonoBehaviour
     private float playerSpeed = 2.0f;
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
+    
 
-    public float playerSpeedMultiplier = 1.0f;
-    public static int jumpCount = 2;
-    private int storedJumps = jumpCount;
+    [SerializeField]
+    [Range(1, 10)]
+    [Tooltip("Multiplies the player speed by set amount")]
+    private float playerSpeedMultiplier = 1.0f;
+    
+    private int storedJumps = 2;
 
     private void Start()
     {
@@ -26,7 +30,7 @@ public class Example : MonoBehaviour
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
-            storedJumps = jumpCount;
+            storedJumps = 2;
         }
 
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));

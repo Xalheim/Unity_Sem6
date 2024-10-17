@@ -9,8 +9,13 @@ using UnityEngine.ProBuilder;
 public class CreateMeshExample : MonoBehaviour
 {
 
-    public Material platformMaterial;
-    public Vector3 spawnPosition;
+    [SerializeField]
+    [Tooltip("Set material to be used for faces")]
+    private Material platformMaterial;
+
+    [SerializeField]
+    [Tooltip("Decide where the mesh will be created")]
+    private Vector3 spawnPosition;
 
     // Start is called before the first frame update
     void Start()

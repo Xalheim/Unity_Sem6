@@ -1,20 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5;
-
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    // Start is called before the first frame update
+    private bool isJumping = false;
+
+    [SerializeField]
+    [Range(1, 10)]
+    [Tooltip("Multiplies the player speed by set amount")]
+    private float speed = 5;
+
+    // Backing field for health
+    [SerializeField]
+    private int health = 100;
+
+    // Property to control access to health
+    public int Health
+    {
+        get { return health; }
+        set
+        {
+            // Ensure health is within a valid range
+            health = Mathf.Clamp(value, 0, 100);
+            Debug.Log("Player Health: " + health);
+        }
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
+
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
@@ -22,6 +43,12 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
+    void OnJump(InputValue movementValue)
+    {
+        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        Health -= 10;
+
+    }
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
