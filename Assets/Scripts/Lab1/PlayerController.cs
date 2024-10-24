@@ -8,10 +8,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private float movementX;
     private float movementY;
-    private bool isJumping = false;
 
     [SerializeField]
-    [Range(1, 10)]
+    [Range(1, 40)]
     [Tooltip("Multiplies the player speed by set amount")]
     private float speed = 5;
 
@@ -49,6 +48,7 @@ public class PlayerController : MonoBehaviour
         Health -= 10;
 
     }
+    
     private void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
