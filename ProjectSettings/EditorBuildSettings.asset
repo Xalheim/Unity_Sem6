@@ -6,8 +6,23 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Lab6/Menu.unity
+    guid: e3d572d993a14aa439e214c07b325a6d
+  - enabled: 1
+    path: Assets/Scenes/Lab1/Minigame.unity
+    guid: a0fcd1f22c17dad48ace2aaaa7569d82
+  - enabled: 1
+    path: Assets/Scenes/Lab5/Bridge.unity
+    guid: 500230f4e0b4c3b4a8bc1b4c89c68a88
+  - enabled: 1
+    path: Assets/Scenes/Lab4/Lab4_2.unity
+    guid: cfbfd327a4049e440ae2fae3313c2a70
+  - enabled: 1
+    path: Assets/Scenes/Lab4/Labyrinth.unity
+    guid: ae6fff61b58740a40b708a6b37354d9f
+  - enabled: 1
+    path: Assets/Scenes/Lab6/Victory.unity
+    guid: 2267460b5bb2d6942bf65f692ef46c1a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 981700ce093ced945b7b1328fef1661c,
       type: 3}

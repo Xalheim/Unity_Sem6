@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Counter : MonoBehaviour
 {
@@ -12,6 +13,14 @@ public class Counter : MonoBehaviour
             counter += 1;
             Debug.Log("Coin collected, total coins collected: " + counter);
             Destroy(collision.gameObject);
+        }
+    }
+    void Update()
+    {
+        if (counter == 5)
+        {
+            Debug.Log("You got all the coins, game won!");
+            SceneManager.LoadScene(5);
         }
     }
 }
