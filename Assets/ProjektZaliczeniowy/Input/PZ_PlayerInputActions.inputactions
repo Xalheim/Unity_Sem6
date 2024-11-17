@@ -69,7 +69,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Next Weapon",
+                    "name": "Switch Weapon Mouse",
+                    "type": "Value",
+                    "id": "48d3da16-379e-4085-aab2-dda28a4129c8",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Next Weapon Controller",
                     "type": "Button",
                     "id": "94225cb0-42a8-42b2-a49b-c9842a0da4e1",
                     "expectedControlType": "",
@@ -78,7 +87,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Previous Weapon",
+                    "name": "Previous Weapon Controller",
                     "type": "Button",
                     "id": "625f8bf4-66a2-439c-8886-043ea015b532",
                     "expectedControlType": "",
@@ -390,34 +399,12 @@
                 },
                 {
                     "name": "",
-                    "id": "7a110a06-077d-4d37-ac06-ae8d0479d157",
-                    "path": "<Mouse>/forwardButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Next Weapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ffa53582-98ef-4635-a214-e5960b489d85",
                     "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Next Weapon",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1f6cefc3-ecec-4b80-aec3-ed7763c7e8fa",
-                    "path": "<Mouse>/backButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Previous Weapon",
+                    "action": "Next Weapon Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -428,7 +415,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Previous Weapon",
+                    "action": "Previous Weapon Controller",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -561,6 +548,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AlternateFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "71e0ffa1-7ecc-4dfd-8005-1eae105b1c25",
+                    "path": "<Mouse>/position/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Switch Weapon Mouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PZ_FirstWeapon : MonoBehaviour
+public class PZ_SecondWeapon : MonoBehaviour
 {
     private Boolean AlternateTrigger;
     [SerializeField]
@@ -55,7 +55,7 @@ public class PZ_FirstWeapon : MonoBehaviour
         if (!IsShooting)
         {
             StartCoroutine(WeaponDelay());
-            Debug.Log("FIRED WEAPON NUMBER   1");
+            Debug.Log("FIRED WEAPON NUMBER   2");
             if (AlternateTrigger)
             {
                 Debug.Log("big shoot");
