@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
-public class PZ_CameraController : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Modify camera movement sensitivity")]
@@ -14,23 +16,28 @@ public class PZ_CameraController : MonoBehaviour
     private Transform playerBody;
 
     private float xRotation = 0f;
+    private Vector2 mouseInput;
 
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = mouseInput.x * mouseSensitivity * Time.deltaTime;
+        float mouseY = mouseInput.y * mouseSensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+    public void OnMouseMove(InputAction.CallbackContext context)
+    {
+        mouseInput = context.ReadValue<Vector2>();
     }
 }
