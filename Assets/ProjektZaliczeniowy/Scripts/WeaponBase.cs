@@ -27,8 +27,8 @@ public class WeaponBase : MonoBehaviour
     protected float secondaryDelay;
 
     [SerializeField]
-    [Tooltip("LayerMask for raycast player ignore")]
-    protected LayerMask playerMask;
+    [Tooltip("LayerMask for raycast enemy detection")]
+    protected LayerMask enemyMask;
 
     private bool secondaryFire;
     private bool isShooting;

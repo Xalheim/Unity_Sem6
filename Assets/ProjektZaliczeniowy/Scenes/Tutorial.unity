@@ -271,7 +271,6 @@ GameObject:
   - component: {fileID: 386121885}
   - component: {fileID: 386121888}
   - component: {fileID: 386121887}
-  - component: {fileID: 386121886}
   - component: {fileID: 386121889}
   m_Layer: 0
   m_Name: Weapon_4
@@ -295,27 +294,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 659550227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &386121886
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386121884}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &386121887
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -383,7 +361,7 @@ MonoBehaviour:
   secondaryDamage: 0
   primaryDelay: 0
   secondaryDelay: 0
-  playerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 0
 --- !u!1 &506328265
@@ -1026,9 +1004,55 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 112
+  m_Interpolate: 0
+  m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!1 &627015153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 627015154}
+  - component: {fileID: 627015155}
+  m_Layer: 0
+  m_Name: WorldManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &627015154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627015153}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.9314203, y: 1.0906067, z: 1.7199827}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &627015155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 627015153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ea83f227244e474685e77048ce641e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 3414290443749759999, guid: bd2a173cb8fd7b44580ab88f70ec6944,
+    type: 3}
 --- !u!1 &659550224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,7 +1207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe97bc115b5e0d4b8cdd7c69444d249, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 40
+  mouseSensitivity: 20
   playerBody: {fileID: 624642036}
 --- !u!1 &996150960
 GameObject:
@@ -1299,7 +1323,6 @@ GameObject:
   - component: {fileID: 1103621952}
   - component: {fileID: 1103621955}
   - component: {fileID: 1103621954}
-  - component: {fileID: 1103621953}
   - component: {fileID: 1103621956}
   m_Layer: 0
   m_Name: Revolver
@@ -1323,27 +1346,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 659550227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1103621953
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1103621951}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1103621954
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1411,7 +1413,7 @@ MonoBehaviour:
   secondaryDamage: 25
   primaryDelay: 0.2
   secondaryDelay: 0.5
-  playerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 128
 --- !u!1 &1127007647
@@ -1439,7 +1441,7 @@ Transform:
   m_GameObject: {fileID: 1127007647}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3900743, y: 0.5183692, z: 1.010868}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1651,7 +1653,7 @@ Transform:
   m_GameObject: {fileID: 1577210777}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 5, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1755,10 +1757,9 @@ GameObject:
   - component: {fileID: 1813480619}
   - component: {fileID: 1813480622}
   - component: {fileID: 1813480621}
-  - component: {fileID: 1813480620}
   - component: {fileID: 1813480623}
   m_Layer: 0
-  m_Name: Weapon_2
+  m_Name: RocketLauncher
   m_TagString: Gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1779,27 +1780,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 659550227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1813480620
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1813480618}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1813480621
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1859,17 +1839,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1813480618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80013dabcbe297d4caacf8b02f475ac3, type: 3}
+  m_Script: {fileID: 11500000, guid: 383607c973f33454db2e882bb5d49a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0
-  damage: 0
-  secondaryDamage: 0
-  primaryDelay: 0
-  secondaryDelay: 0
-  playerMask:
+  range: 4
+  damage: 25
+  secondaryDamage: 40
+  primaryDelay: 1
+  secondaryDelay: 2
+  enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  projectileSpeed: 10
+  projectileMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1946290878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,7 +1865,6 @@ GameObject:
   - component: {fileID: 1946290879}
   - component: {fileID: 1946290882}
   - component: {fileID: 1946290881}
-  - component: {fileID: 1946290880}
   - component: {fileID: 1946290883}
   m_Layer: 0
   m_Name: Weapon_3
@@ -1905,27 +1888,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 659550227}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1946290880
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1946290878}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1946290881
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1993,7 +1955,7 @@ MonoBehaviour:
   secondaryDamage: 0
   primaryDelay: 0
   secondaryDelay: 0
-  playerMask:
+  enemyMask:
     serializedVersion: 2
     m_Bits: 0
 --- !u!1660057539 &9223372036854775807
@@ -2006,3 +1968,4 @@ SceneRoots:
   - {fileID: 1235771210}
   - {fileID: 624642036}
   - {fileID: 1127007648}
+  - {fileID: 627015154}

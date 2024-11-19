@@ -13,7 +13,7 @@ public class Revolver : WeaponBase
         Vector3 position = Camera.main.transform.position;
         Vector3 forward = Camera.main.transform.forward;
 
-        if (Physics.Raycast(position, forward, out hit, range, playerMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
+        if (Physics.Raycast(position, forward, out hit, range, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
         {
             Debug.Log("Hit enemy for " + damage + "damage");
             Debug.DrawRay(position, forward * range, Color.white);
