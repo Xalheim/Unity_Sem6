@@ -13,10 +13,10 @@ public class Revolver : WeaponBase
         Vector3 position = Camera.main.transform.position;
         Vector3 forward = Camera.main.transform.forward;
 
-        if (Physics.Raycast(position, forward, out hit, range, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
+        if (Physics.Raycast(position, forward, out hit, range) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
         {
             Debug.Log("Hit enemy for " + damage + "damage");
-            Debug.DrawRay(position, forward * range, Color.white);
+            Debug.DrawRay(position, forward * range, Color.white, 1f);
 
             if (hpManager != null)
             {
@@ -26,7 +26,32 @@ public class Revolver : WeaponBase
         else
         {
             Debug.Log("No enemy hit.");
-            Debug.DrawRay(position, forward * range, Color.red);
+            Debug.DrawRay(position, forward * range, Color.red, 1f);
+        }
+    }
+
+    protected override void SecondaryFire()
+    {
+        base.SecondaryFire();
+
+        RaycastHit hit;
+        Vector3 position = Camera.main.transform.position;
+        Vector3 forward = Camera.main.transform.forward;
+
+        if (Physics.Raycast(position, forward, out hit, range) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
+        {
+            Debug.Log("Hit enemy for " + secondaryDamage + "damage");
+            Debug.DrawRay(position, forward * range, Color.white, 1f);
+
+            if (hpManager != null)
+            {
+                hpManager.ApplyDamage(secondaryDamage);
+            }
+        }
+        else
+        {
+            Debug.Log("No enemy hit.");
+            Debug.DrawRay(position, forward * range, Color.red, 1f);
         }
     }
 }

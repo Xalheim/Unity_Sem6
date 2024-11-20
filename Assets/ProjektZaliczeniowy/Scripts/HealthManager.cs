@@ -12,6 +12,8 @@ public class HealthManager : MonoBehaviour
     [Tooltip("Decide of object is destroyed upon being killed")]
     private bool isKillable = true;
 
+    private bool isHit;
+
     private int health;
 
     private void Start()
@@ -23,9 +25,10 @@ public class HealthManager : MonoBehaviour
     {
         if (!isKillable)
         {
+            isHit = true;
             return;
         }
-        if (health < damage)
+        if (health <= damage)
         {
             Destroy(gameObject);
         }
@@ -39,4 +42,15 @@ public class HealthManager : MonoBehaviour
     {
         health = Mathf.Min(health + amount, maximumHealth);
     }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public bool GetIsHit()
+    {
+        return isHit;
+    }
+
 }

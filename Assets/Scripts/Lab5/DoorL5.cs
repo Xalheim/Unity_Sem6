@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorController : MonoBehaviour
+public class DoorL5 : MonoBehaviour
 {
     public Transform door; // Drzwi, które maj¹ siê podnosiæ
     public float openHeight = 5f; // Wysokoœæ, na któr¹ drzwi siê podnios¹

@@ -30,7 +30,7 @@ public class WeaponBase : MonoBehaviour
     [Tooltip("LayerMask for raycast enemy detection")]
     protected LayerMask enemyMask;
 
-    private bool secondaryFire;
+    protected bool secondaryFire;
     private bool isShooting;
 
     
@@ -91,6 +91,7 @@ public class WeaponBase : MonoBehaviour
     {
         isShooting = false;
         secondaryFire = false;
+        StopAllCoroutines();
         gameObject.SetActive(false);
     }
 }

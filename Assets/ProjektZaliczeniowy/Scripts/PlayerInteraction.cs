@@ -3,9 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
-//https://www.youtube.com/watch?v=_QajrabyTJc
-//https://docs.unity3d.com/ScriptReference/CharacterController.Move.html
+using UnityEngine.SocialPlatforms;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -15,22 +13,36 @@ public class PlayerInteraction : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Jump height force")]
-    private float jumpForce = 20f;
+    private float jumpForce = 5f;
+
+    [SerializeField]
+    [Tooltip("How far the dash launches the player")]
+    private float dashStrength = 10f;
+
+    [SerializeField]
+    [Tooltip("How much damage is dealt by melee")]
+    private int meleeDamage = 25;
+
+    [SerializeField]
+    [Tooltip("World mask for jumping reset")]
+    private LayerMask worldMask;
+
+    [SerializeField]
+    [Tooltip("Enemy mask for melee damage")]
+    private LayerMask enemyMask;
 
     [SerializeField]
     [Tooltip("List all available weapons")]
     private WeaponBase[] weapons;
 
-    [SerializeField]
-    [Tooltip("World layer for jumping reset")]
-    private LayerMask worldLayer;
-
     private Rigidbody rb;
     private Vector2 movement;
 
     private WeaponBase activeWeapon;
-    private bool jumped;
-    
+    private bool grounded;
+    private bool dashed;
+    private Vector3 move;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,40 +50,67 @@ public class PlayerInteraction : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         activeWeapon = weapons[0];
     }
-
-    public void Melee(InputAction.CallbackContext context)
-    {
-        Debug.Log("Melee!");
-    }
-
-    public void Dash(InputAction.CallbackContext context)
-    {
-        Debug.Log("Dasho");
-    }
-
-    public void Jump(InputAction.CallbackContext context)
-    {
-        if (context.phase == InputActionPhase.Performed && !jumped)
-        {
-            jumped = true;
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
-
     private void Update()
     {
-        if (Physics.Raycast(transform.position, Vector3.down, 1, worldLayer))
+        grounded = isGrounded();
+        if (transform.position.y < -50)
         {
-            jumped = false;
+            transform.position = new Vector3(0, 1, 0);
+            Debug.Log("Fell out of Bounds!");
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        Vector3 move = new Vector3(movement.x, 0.0f, movement.y);
+        move = new Vector3(movement.x, 0.0f, movement.y);
         move = transform.TransformDirection(move);
         rb.MovePosition(rb.position + new Vector3(move.x, 0, move.z) * speed * Time.fixedDeltaTime);
+    }
+    private bool isGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, 1.1f, worldMask);
+    }
+
+
+    public void Melee(InputAction.CallbackContext context)
+    {
+        Debug.Log("Melee!");
+        RaycastHit hit;
+        Vector3 position = Camera.main.transform.position;
+        Vector3 forward = Camera.main.transform.forward;
+
+        if (Physics.Raycast(position, forward, out hit, 5, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
+        {
+            Debug.Log("Hit enemy for " + meleeDamage + "damage");
+            Debug.DrawRay(position, forward * 5, Color.white, 5f);
+
+            if (hpManager != null)
+            {
+                hpManager.ApplyDamage(meleeDamage);
+            }
+        }
+        else
+        {
+            Debug.Log("No enemy hit.");
+            Debug.DrawRay(position, forward * 5, Color.red, 5f);
+        }
+    }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && !dashed)
+        {
+            StartCoroutine(DashActivation());
+        }
+    }
+
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed && grounded)
+        {
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -111,6 +150,15 @@ public class PlayerInteraction : MonoBehaviour
         {
             activeWeapon.ChangeFireType(false);
         }
+    }
+    private IEnumerator DashActivation()
+    {
+        rb.AddForce(new Vector3(move.x * dashStrength, 0, move.z * dashStrength));
+        dashed = true;
+        yield return new WaitForSeconds(.2f);
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(.8f);
+        dashed = false;
     }
 
 }
