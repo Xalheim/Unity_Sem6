@@ -15,4 +15,9 @@ public class BasicGruntAI : MonoBehaviour
     {
         
     }
+
+    public void EnemyKilled()
+    {
+        Arena.activeArena.EnemyKilled();
+    }
 }

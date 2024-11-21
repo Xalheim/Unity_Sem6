@@ -30,7 +30,24 @@ public class HealthManager : MonoBehaviour
         }
         if (health <= damage)
         {
+            if (gameObject.TryGetComponent<BasicGruntAI>(out var enemy))
+            {
+                enemy.EnemyKilled();
+            }
             Destroy(gameObject);
+        }
+        else
+        {
+            health -= damage;
+        }
+    }
+
+    public void ApplyPlayerDamage(int damage)
+    {
+        if (health <= damage)
+        {
+            Debug.Log("PLAYER DIED, DO GAME OVER THING :)");
+            health = maximumHealth;
         }
         else
         {

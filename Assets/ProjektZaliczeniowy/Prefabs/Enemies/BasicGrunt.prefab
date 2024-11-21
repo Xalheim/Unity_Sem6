@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 265781933035213248}
   - component: {fileID: 2522857054895517957}
   - component: {fileID: 8280653433411197984}
+  - component: {fileID: 3949256169544320771}
   m_Layer: 7
   m_Name: BasicGrunt
   m_TagString: Enemy
@@ -122,3 +123,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   isKillable: 1
+--- !u!114 &3949256169544320771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6800457572907115057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84516b463373eca4f9ab5076fc7759b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

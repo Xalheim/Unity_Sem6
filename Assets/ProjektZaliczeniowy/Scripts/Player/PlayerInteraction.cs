@@ -34,6 +34,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     [Tooltip("List all available weapons")]
     private WeaponBase[] weapons;
+    
 
     private Rigidbody rb;
     private Vector2 movement;
