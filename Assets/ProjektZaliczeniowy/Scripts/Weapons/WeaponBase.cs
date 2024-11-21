@@ -47,11 +47,11 @@ public class WeaponBase : MonoBehaviour
             return;
         }
 
-        if (secondaryFire)
+        if (secondaryFire && !PauseMenu.isGamePaused)
         {
             SecondaryFire();
         }
-        else
+        else if (!PauseMenu.isGamePaused)
         {
             PrimaryFire();
         }

@@ -20,7 +20,7 @@ public class Counter : MonoBehaviour
         if (counter == 5)
         {
             Debug.Log("You got all the coins, game won!");
-            SceneManager.LoadScene(5);
+            SceneManager.LoadScene(8);
         }
     }
 }

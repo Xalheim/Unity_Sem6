@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PauseMenu : MonoBehaviour
     [SerializeField]
     [Tooltip("Reference to Escape Menu Panel")]
     private GameObject pausePanel;
+
+    public static bool isGamePaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +29,37 @@ public class PauseMenu : MonoBehaviour
     {
         if (context.phase == InputActionPhase.Performed)
         {
-            if (pausePanel.activeSelf)
+            if (isGamePaused)
             {
-                pausePanel.SetActive(!pausePanel.activeSelf);
+                isGamePaused = false;
+                pausePanel.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1;
             }
             else
             {
-                pausePanel.SetActive(pausePanel.activeSelf);
+                isGamePaused = true;
+                pausePanel.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
                 Time.timeScale = 0;
             }
         }
+    }
+
+    public void DisablePausePanel()
+    {
+        if (isGamePaused)
+        {
+            isGamePaused = false;
+            pausePanel.SetActive(false);
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1;
+        }
+    }
+
+    public void ChangeScene(int level)
+    {
+        SceneManager.LoadScene(level);
     }
 
 }

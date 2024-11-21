@@ -754,7 +754,7 @@ MonoBehaviour:
     m_Bits: 1
   enemyMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   weapons:
   - {fileID: 3084639738475497161}
   - {fileID: 549043256683067399}

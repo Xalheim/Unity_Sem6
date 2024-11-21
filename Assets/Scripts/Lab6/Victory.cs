@@ -13,6 +13,6 @@ public class Victory : MonoBehaviour
     {
         Debug.Log("Victory screen timer of 5 seconds active.");
         yield return new WaitForSeconds(5);
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(3);
     }
 }

@@ -80,10 +80,10 @@ public class PlayerInteraction : MonoBehaviour
         Vector3 position = Camera.main.transform.position;
         Vector3 forward = Camera.main.transform.forward;
 
-        if (Physics.Raycast(position, forward, out hit, 5, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
+        if (Physics.Raycast(position, forward, out hit, 2.5f, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
         {
-            Debug.Log("Hit enemy for " + meleeDamage + "damage");
-            Debug.DrawRay(position, forward * 5, Color.white, 5f);
+            Debug.Log("Hit enemy for " + meleeDamage + " melee damage");
+            Debug.DrawRay(position, forward * 2.5f, Color.white, 5f);
 
             if (hpManager != null)
             {
@@ -93,13 +93,13 @@ public class PlayerInteraction : MonoBehaviour
         else
         {
             Debug.Log("No enemy hit.");
-            Debug.DrawRay(position, forward * 5, Color.red, 5f);
+            Debug.DrawRay(position, forward * 2.5f, Color.red, 5f);
         }
     }
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && !dashed)
+        if (context.phase == InputActionPhase.Performed && !dashed && !PauseMenu.isGamePaused)
         {
             StartCoroutine(DashActivation());
         }
@@ -107,7 +107,7 @@ public class PlayerInteraction : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed && grounded)
+        if (context.phase == InputActionPhase.Performed && grounded && !PauseMenu.isGamePaused)
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -120,17 +120,20 @@ public class PlayerInteraction : MonoBehaviour
 
     public void SwitchToWeapon(int WeaponIndex)
     {
-        if (activeWeapon != null)
+        if (!PauseMenu.isGamePaused)
         {
-            activeWeapon.Deactivate();
+            if (activeWeapon != null)
+            {
+                activeWeapon.Deactivate();
+            }
+            activeWeapon = weapons[WeaponIndex];
+            activeWeapon.Activate();
         }
-        activeWeapon = weapons[WeaponIndex];
-        activeWeapon.Activate();
     }
 
     public void FireWeapon(InputAction.CallbackContext context)
     {
-        if (activeWeapon != null && context.phase == InputActionPhase.Performed)
+        if (activeWeapon != null && context.phase == InputActionPhase.Performed && !PauseMenu.isGamePaused)
         {
             activeWeapon.Shoot();
         }
