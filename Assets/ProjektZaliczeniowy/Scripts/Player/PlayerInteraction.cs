@@ -34,20 +34,26 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     [Tooltip("List all available weapons")]
     private WeaponBase[] weapons;
-    
+
+    [SerializeField]
+    [Tooltip("Reference for weapon unlock verification")]
+    private PlayerProgressManager playerProgressManager;
 
     private Rigidbody rb;
     private Vector2 movement;
 
     private WeaponBase activeWeapon;
     private bool grounded;
-    private bool dashed;
+    public bool dashed;
     private Vector3 move;
+
+    public static PlayerInteraction instance;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         rb = GetComponent<Rigidbody>();
         activeWeapon = weapons[0];
     }
@@ -119,15 +125,15 @@ public class PlayerInteraction : MonoBehaviour
         movement = context.ReadValue<Vector2>();
     }
 
-    public void SwitchToWeapon(int WeaponIndex)
+    public void SwitchToWeapon(int weaponIndex)
     {
-        if (!PauseMenu.isGamePaused)
+        if (!PauseMenu.isGamePaused && VerifyWeaponPossession(weaponIndex))
         {
             if (activeWeapon != null)
             {
                 activeWeapon.Deactivate();
             }
-            activeWeapon = weapons[WeaponIndex];
+            activeWeapon = weapons[weaponIndex];
             activeWeapon.Activate();
         }
     }
@@ -163,6 +169,23 @@ public class PlayerInteraction : MonoBehaviour
         rb.velocity = Vector3.zero;
         yield return new WaitForSeconds(.8f);
         dashed = false;
+    }
+
+    private bool VerifyWeaponPossession(int weaponIndex)
+    {
+        switch (weaponIndex)
+        {
+            case 0:
+                return playerProgressManager.playerProgress.hasRevolver;
+            case 1:
+                return playerProgressManager.playerProgress.hasShotgun;
+            case 2:
+                return playerProgressManager.playerProgress.hasGrenadeLauncher;
+            case 3:
+                return playerProgressManager.playerProgress.hasRocketLauncher;
+            default:
+                return false;
+        }
     }
 
 }

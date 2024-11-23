@@ -9,11 +9,15 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Modify camera movement sensitivity")]
-    private float mouseSensitivity = 400f;
+    private float mouseSensitivity = 20f;
 
     [SerializeField]
     [Tooltip("Reference to player character")]
     private Transform playerBody;
+
+    [SerializeField]
+    [Tooltip("SettingsManager for sensitivity")]
+    private SettingsManager settingsManager;
 
     private float xRotation = 0f;
     private Vector2 mouseInput;
@@ -21,6 +25,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mouseSensitivity = settingsManager.settings.sensitivity;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 

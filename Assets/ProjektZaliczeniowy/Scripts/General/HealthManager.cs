@@ -12,6 +12,10 @@ public class HealthManager : MonoBehaviour
     [Tooltip("Decide of object is destroyed upon being killed")]
     private bool isKillable = true;
 
+    [SerializeField]
+    [Tooltip("Player use only bool")]
+    private bool isPlayer = false;
+
     private bool isHit;
 
     private int health;
@@ -23,6 +27,18 @@ public class HealthManager : MonoBehaviour
 
     public void ApplyDamage(int damage)
     {
+        if (!isPlayer)
+        {
+            DamageEnemy(damage);
+        }
+        else
+        {
+            DamagePlayer(damage);
+        }
+    }
+
+    public void DamageEnemy(int damage)
+    {
         if (!isKillable)
         {
             isHit = true;
@@ -30,7 +46,7 @@ public class HealthManager : MonoBehaviour
         }
         if (health <= damage)
         {
-            if (gameObject.TryGetComponent<BasicGruntAI>(out var enemy))
+            if (gameObject.TryGetComponent<EnemyBase>(out var enemy))
             {
                 enemy.EnemyKilled();
             }
@@ -42,7 +58,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    public void ApplyPlayerDamage(int damage)
+    public void DamagePlayer(int damage)
     {
         if (health <= damage)
         {
@@ -68,6 +84,11 @@ public class HealthManager : MonoBehaviour
     public bool GetIsHit()
     {
         return isHit;
+    }
+
+    public bool IsPlayer()
+    {
+        return isPlayer;
     }
 
 }

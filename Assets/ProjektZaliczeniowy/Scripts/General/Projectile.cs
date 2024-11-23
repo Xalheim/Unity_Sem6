@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
     private int damage;
     private int speed;
     private float range;
+    private float pushStrength;
     private Vector3 direction;
     private Rigidbody rb;
     private bool isRocket;
@@ -42,11 +43,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    public void Initialize(int damage, int speed, int range, LayerMask layerMask, Vector3 direction, ProjectileType projType)
+    public void Initialize(int damage, int speed, int range, float pushStrength, LayerMask layerMask, Vector3 direction, ProjectileType projType)
     {
         this.damage = damage;
         this.speed = speed;
         this.range = range;
+        this.pushStrength = pushStrength;
         this.direction = direction;
         this.projType = projType;
         gameObject.layer = LayerMask.GetMask(layerMask.ToString());
@@ -64,8 +66,9 @@ public class Projectile : MonoBehaviour
 
         if (projType == ProjectileType.Rocket)
         {
-            if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager))
+            if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager) && !hpManager.IsPlayer())
             {
+                Debug.Log("Direct hit");
                 hpManager.ApplyDamage(damage);
             }
             AoeDamage();
@@ -73,8 +76,9 @@ public class Projectile : MonoBehaviour
 
         if (projType == ProjectileType.Grenade)
         {
-            if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager))
+            if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager) && !hpManager.IsPlayer())
             {
+                Debug.Log("Direct hit");
                 hpManager.ApplyDamage(damage);
                 AoeDamage();
             }
@@ -88,13 +92,27 @@ public class Projectile : MonoBehaviour
 
     private void AoeDamage()
     {
-        var colliders = Physics.OverlapSphere(transform.position, range, LayerMask.GetMask("Enemy"));
+        var colliders = Physics.OverlapSphere(transform.position, range);
         for (int i = 0; i < colliders.Length; i++)
         {
             var current = colliders[i];
             if (current.TryGetComponent<HealthManager>(out var hpManager))
             {
-                hpManager.ApplyDamage(damage);
+                if (!hpManager.IsPlayer())
+                {
+                    hpManager.ApplyDamage(damage);
+                }
+                else
+                {
+                    hpManager.ApplyDamage(damage / 2);
+                }
+                if (current.TryGetComponent<Rigidbody>(out var rb))
+                {
+                    Vector3 pushVector = (current.transform.position - transform.position).normalized * pushStrength;
+                    rb.AddForce(pushVector);
+                    Debug.Log(pushVector);
+                }
+
             }
         }
 

@@ -63,7 +63,7 @@ Transform:
   m_GameObject: {fileID: 3208281042697259602}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 6}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
   m_LocalScale: {x: 4, y: 5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -174,8 +174,8 @@ Transform:
   m_GameObject: {fileID: 3517632117242250113}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 6}
-  m_LocalScale: {x: 6, y: 5, z: 4}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 8, y: 5, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7443715540551685221}
@@ -284,6 +284,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122329224635226145, guid: 74aa09e2bdd677541bc45c08ee7264cb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8122329224635226145, guid: 74aa09e2bdd677541bc45c08ee7264cb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8122329224635226145, guid: 74aa09e2bdd677541bc45c08ee7264cb,
         type: 3}

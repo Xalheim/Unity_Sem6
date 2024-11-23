@@ -18,12 +18,14 @@ public class PlayerGameUI : MonoBehaviour
     private TextMeshProUGUI dashTMP;
 
     private HealthManager hpManager;
+    private PlayerInteraction playerInteraction;
     private int health;
 
     // Start is called before the first frame update
     void Start()
     {
         hpManager = player.GetComponent<HealthManager>();
+        playerInteraction = player.GetComponent<PlayerInteraction>();
     }
 
     // Update is called once per frame
@@ -31,6 +33,14 @@ public class PlayerGameUI : MonoBehaviour
     {
         health = hpManager.GetHealth();
         healthTMP.text = "Health: " + health;
-        dashTMP.text = "Dash: TO IMPLEMENT RECHARGE TIMER";
+        if (playerInteraction.dashed)
+        {
+            dashTMP.text = "Dash Cooldown";
+        }   
+        else
+        {
+            dashTMP.text = "Dash Ready";
+        }
+        
     }
 }

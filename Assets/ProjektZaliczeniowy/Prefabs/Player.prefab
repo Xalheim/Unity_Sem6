@@ -105,6 +105,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   projectileSpeed: 15
+  projectilePushStrength: 250
   projectileMask:
     serializedVersion: 2
     m_Bits: 256
@@ -317,6 +318,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   projectileSpeed: 700
+  projectilePushStrength: 150
   projectileMask:
     serializedVersion: 2
     m_Bits: 256
@@ -761,6 +763,8 @@ MonoBehaviour:
   - {fileID: 549043256683067399}
   - {fileID: 1793338536817322586}
   - {fileID: 3515663612033374838}
+  playerProgressManager: {fileID: 0}
+  dashed: 0
 --- !u!114 &1428212961568443206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -775,6 +779,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 100
   isKillable: 0
+  isPlayer: 1
 --- !u!1 &7204983401248012478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1036,3 +1041,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 20
   playerBody: {fileID: 7444647434491059359}
+  settingsManager: {fileID: 0}

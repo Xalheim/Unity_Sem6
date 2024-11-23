@@ -14,6 +14,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ProjektZaliczeniowy/Scenes/Level_1.unity
     guid: 5935b9b8b02247342bf403f0e78472bc
+  - enabled: 1
+    path: Assets/ProjektZaliczeniowy/Scenes/Level_2.unity
+    guid: 611c73f53fc8542429988d6ae27341d3
+  - enabled: 1
+    path: Assets/ProjektZaliczeniowy/Scenes/Level_3.unity
+    guid: f04531afe36781248a625954556dd578
+  - enabled: 1
+    path: Assets/ProjektZaliczeniowy/Scenes/Level_4.unity
+    guid: 032d764553739bb47896085dfc2c30e9
   - enabled: 0
     path: Assets/Scenes/Lab6/Menu.unity
     guid: e3d572d993a14aa439e214c07b325a6d

@@ -20,19 +20,11 @@ public class Arena : MonoBehaviour
 
     private bool isActive;
     private bool used;
+    private bool completed;
 
     private int aliveEnemies;
+    private bool subarena;
 
-
-    void Start()
-    {
-        aliveEnemies = enemySpawners.Length;
-        if (activeArena)
-        {
-            activeArena.ResetArena();
-        }
-        activeArena = this;
-    }
 
     void Update()
     {
@@ -49,35 +41,39 @@ public class Arena : MonoBehaviour
             used = true;
         }
 
-        if (used && aliveEnemies <= 0)
+        if (used && aliveEnemies <= 0 && !completed)
         {
             if (nextArena)
             {
-                nextArena.ActivateArena();
+                isActive = false;
+                StartCoroutine(ActivateSubarena());
             }
             else
             {
-                for (int i = 0; i < doors.Length; i++)
-                {
-                    doors[i].UnlockDoor();
-                }
+                StartCoroutine(UnlockArenaDoors());
             }
-            used = false;
             isActive = false;
+            completed = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!subarena && other.CompareTag("Player"))
         {
-            isActive = true;
+            ActivateArena();
         }
     }
 
     public void ActivateArena()
     {
+        activeArena = this;
+        if (nextArena)
+        {
+            nextArena.SetSubArena();
+        }
         isActive = true;
+        aliveEnemies = enemySpawners.Length;
     }
 
     private void ResetArena()
@@ -89,6 +85,28 @@ public class Arena : MonoBehaviour
     public void EnemyKilled()
     {
         aliveEnemies--;
+        Debug.Log("ENEMY KILLED, current amount: " + aliveEnemies);
+    }
+
+    public void SetSubArena()
+    {
+        subarena = true;
+    }
+
+    private IEnumerator ActivateSubarena()
+    {
+        yield return new WaitForSeconds(1f);
+        nextArena.ActivateArena();
+    }
+
+    private IEnumerator UnlockArenaDoors()
+    {
+        yield return new WaitForSeconds(2f);
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].UnlockDoor();
+        }
+        activeArena = null;
     }
 
 }
