@@ -5,7 +5,7 @@ using UnityEngine.ProBuilder;
 
 public enum ProjectileType
 {
-    Rocket, PlasmaRocket, Grenade
+    Rocket, PlasmaRocket, Grenade, EnemyBullet
 };
 
 public class Projectile : MonoBehaviour
@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
     private bool isRocket;
 
     private ProjectileType projType;
-
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -37,9 +37,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (projType == ProjectileType.Rocket || projType == ProjectileType.PlasmaRocket)
+        if (projType == ProjectileType.Rocket || projType == ProjectileType.PlasmaRocket || projType == ProjectileType.EnemyBullet)
         {
-            rb.MovePosition(rb.position + speed * Time.fixedDeltaTime * direction);
+            rb.velocity = (direction * speed * Time.fixedDeltaTime);
         }
     }
 
@@ -88,10 +88,25 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (projType == ProjectileType.EnemyBullet)
+        {
+            if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager) && hpManager.IsPlayer())
+            {
+                Debug.Log("Enemy hit player with a bullet for " + damage + " damage");
+                hpManager.ApplyDamage(damage);
+            }
+            Destroy(gameObject);
+        }
     }
 
     private void AoeDamage()
     {
+        if (range <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
         var colliders = Physics.OverlapSphere(transform.position, range);
         for (int i = 0; i < colliders.Length; i++)
         {
@@ -121,7 +136,7 @@ public class Projectile : MonoBehaviour
 
     private void SetupProjectileByType()
     {
-        if (projType == ProjectileType.Rocket || projType == ProjectileType.PlasmaRocket)
+        if (projType == ProjectileType.Rocket || projType == ProjectileType.PlasmaRocket || projType == ProjectileType.EnemyBullet)
         {
             rb.useGravity = false;
         }

@@ -18,10 +18,7 @@ public class Revolver : WeaponBase
             Debug.Log("Hit enemy for " + damage + "damage");
             Debug.DrawRay(position, forward * range, Color.white, 1f);
 
-            if (hpManager != null)
-            {
-                hpManager.ApplyDamage(damage);
-            }
+            hpManager.ApplyDamage(damage);
         }
         else
         {
@@ -43,10 +40,7 @@ public class Revolver : WeaponBase
             Debug.Log("Hit enemy for " + secondaryDamage + "damage");
             Debug.DrawRay(position, forward * range, Color.white, 1f);
 
-            if (hpManager != null)
-            {
-                hpManager.ApplyDamage(secondaryDamage);
-            }
+            hpManager.ApplyDamage(secondaryDamage);
         }
         else
         {

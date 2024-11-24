@@ -51,10 +51,7 @@ public class Shotgun : WeaponBase
                 Debug.Log("Hit enemy with ray number " + i + "for damage: " + damage);
                 Debug.DrawRay(position, forwardOffset * range, Color.white, 1f);
 
-                if (hpManager != null)
-                {
-                    hpManager.ApplyDamage(damage);
-                }
+                hpManager.ApplyDamage(damage);
             }
             else
             {
@@ -80,10 +77,7 @@ public class Shotgun : WeaponBase
                 Debug.Log("Hit enemy with ray number " + i + "for damage: " + chargeDamage);
                 Debug.DrawRay(position, forwardOffset * range, Color.white, 1f);
 
-                if (hpManager != null)
-                {
-                    hpManager.ApplyDamage(chargeDamage);
-                }
+                hpManager.ApplyDamage(chargeDamage);
             }
             else
             {

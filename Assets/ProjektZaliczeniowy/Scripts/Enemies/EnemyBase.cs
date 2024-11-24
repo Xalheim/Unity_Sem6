@@ -7,44 +7,48 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("Distance before attacking")]
-    private float attackDistance = 10f;
+    protected float attackDistance = 3f;
 
-    private bool killed;
+    [SerializeField]
+    [Tooltip("Amount of damage dealt by enemy")]
+    protected int damage = 15;
 
-    void Start()
+    [SerializeField]
+    [Tooltip("Enemy movement speed")]
+    protected int speed = 7;
+
+    [SerializeField]
+    protected Rigidbody rb;
+    protected bool isAttacking = false;
+    protected bool isKilled = false;
+
+    protected Vector3 playerPosition;
+    protected Vector3 enemyPosition;
+
+
+    protected virtual void FixedUpdate()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        Vector3 playerPosition = PlayerInteraction.instance.transform.position;
-        if (Vector3.Distance(playerPosition, transform.position) > attackDistance)
-        {
-            MoveToPlayer();
-        }
-        else
-        {
-            AttackPlayer();
-        }
+        
     }
 
     public void EnemyKilled()
     {
-        if (!killed)
+        if (!isKilled)
         {
-            killed = true;
-            Arena.activeArena.EnemyKilled();
+            isKilled = true;
+            if (Arena.activeArena != null)
+            {
+                Arena.activeArena.EnemyKilled();
+            }
         }
     }
 
-    protected void AttackPlayer()
+    protected virtual void AttackPlayer()
     {
 
     }
 
-    protected void MoveToPlayer()
+    protected virtual void Move()
     {
 
     }

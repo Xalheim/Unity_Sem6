@@ -171,6 +171,11 @@ public class PlayerInteraction : MonoBehaviour
         dashed = false;
     }
 
+    public void StopRigidbodyVelocity()
+    {
+        rb.velocity = Vector3.zero;
+    }
+
     private bool VerifyWeaponPossession(int weaponIndex)
     {
         switch (weaponIndex)

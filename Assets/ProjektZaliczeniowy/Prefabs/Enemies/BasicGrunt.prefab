@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2522857054895517957}
   - component: {fileID: 5440660884256978411}
   - component: {fileID: 8280653433411197984}
-  - component: {fileID: 3949256169544320771}
+  - component: {fileID: 919358790661345407}
   m_Layer: 7
   m_Name: BasicGrunt
   m_TagString: Enemy
@@ -135,7 +135,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &8280653433411197984
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   maximumHealth: 100
   isKillable: 1
   isPlayer: 0
---- !u!114 &3949256169544320771
+--- !u!114 &919358790661345407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,7 +161,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6800457572907115057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84516b463373eca4f9ab5076fc7759b7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d07153eb639bfd468d61a2d9a6e5ff9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDistance: 10
+  attackDistance: 3
+  damage: 15
+  speed: 7
+  rb: {fileID: 0}
