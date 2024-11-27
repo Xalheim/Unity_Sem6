@@ -23,12 +23,17 @@ public class EnemyBase : MonoBehaviour
     protected bool isKilled = false;
 
     protected Vector3 playerPosition;
-    protected Vector3 enemyPosition;
+    protected Vector3 gunPosition;
 
 
     protected virtual void FixedUpdate()
     {
-        
+        if (transform.position.y <= 100)
+        {
+            HealthManager hpManager = GetComponent<HealthManager>();
+            hpManager.ApplyDamage(9999);
+            EnemyKilled();
+        }
     }
 
     public void EnemyKilled()

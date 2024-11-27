@@ -15,6 +15,10 @@ public class DoorController : MonoBehaviour
     public float speed = 2f;
 
     [SerializeField]
+    [Tooltip("Stops the door from closing")]
+    private bool oneTimeUse = false;
+
+    [SerializeField]
     [Tooltip("Material the door changes to when locked")]
     public Material lockedDoorMaterial;
 
@@ -68,7 +72,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!oneTimeUse && other.CompareTag("Player"))
         {
             isOpening = false;
         }

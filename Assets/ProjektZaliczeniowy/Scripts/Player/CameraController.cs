@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     private SettingsManager settingsManager;
 
     private float xRotation = 0f;
+    private float yRotation = 0f;
     private Vector2 mouseInput;
 
     // Start is called before the first frame update
@@ -30,7 +31,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         float mouseX = mouseInput.x * mouseSensitivity * Time.deltaTime;
         float mouseY = mouseInput.y * mouseSensitivity * Time.deltaTime;
@@ -38,8 +39,11 @@ public class CameraController : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-        playerBody.Rotate(Vector3.up * mouseX);
+        yRotation += mouseX;
+
+        transform.position = playerBody.position + new Vector3 (0, 0.5f, 0);
+        transform.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
+        playerBody.transform.rotation = Quaternion.Euler(0f, yRotation, 0f);
     }
     public void OnMouseMove(InputAction.CallbackContext context)
     {

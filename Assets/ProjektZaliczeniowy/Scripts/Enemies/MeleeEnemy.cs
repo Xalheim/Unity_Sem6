@@ -11,9 +11,9 @@ public class MeleeEnemy : EnemyBase
     protected override void FixedUpdate()
     {
         playerPosition = PlayerInteraction.instance.transform.position;
-        enemyPosition = transform.position;
-        enemyToPlayerVector = (playerPosition - enemyPosition).normalized;
-        if (!isAttacking && Vector3.Distance(playerPosition, enemyPosition) < attackDistance)
+        gunPosition = transform.position;
+        enemyToPlayerVector = (playerPosition - gunPosition).normalized;
+        if (!isAttacking && Vector3.Distance(playerPosition, gunPosition) < attackDistance)
         {
             AttackPlayer();
         }
@@ -39,10 +39,10 @@ public class MeleeEnemy : EnemyBase
 
         RaycastHit hit;
 
-        if (Physics.Raycast(enemyPosition, enemyToPlayerVector, out hit, 4.5f) && hit.collider.TryGetComponent<HealthManager>(out var hpManager) && hpManager.IsPlayer())
+        if (Physics.Raycast(gunPosition, enemyToPlayerVector, out hit, 4.5f) && hit.collider.TryGetComponent<HealthManager>(out var hpManager) && hpManager.IsPlayer())
         {
             Debug.Log("Hit player for " + damage + "damage");
-            Debug.DrawRay(enemyPosition, enemyToPlayerVector * 4.5f, Color.white, 1f);
+            Debug.DrawRay(gunPosition, enemyToPlayerVector * 4.5f, Color.white, 1f);
 
             hpManager.ApplyDamage(damage);
 
@@ -50,7 +50,7 @@ public class MeleeEnemy : EnemyBase
         else
         {
             Debug.Log("Enemy attack missed.");
-            Debug.DrawRay(enemyPosition, enemyToPlayerVector * 4.5f, Color.red, 1f);
+            Debug.DrawRay(gunPosition, enemyToPlayerVector * 4.5f, Color.red, 1f);
         }
         isAttacking = false;
     }

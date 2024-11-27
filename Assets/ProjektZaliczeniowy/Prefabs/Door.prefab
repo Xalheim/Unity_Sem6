@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 298029655779527568}
   - component: {fileID: 844481322222504458}
   - component: {fileID: 6680248160114432899}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: DoorTrigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,8 +268,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 3208281042697259602}
-  openHeight: 5
+  openHeight: 6
   speed: 6
+  oneTimeUse: 0
   lockedDoorMaterial: {fileID: 2100000, guid: df0da1e22a64f1245bf4dd48a8553c5d, type: 2}
   isLocked: 0
 --- !u!1001 &2378631206661029914
@@ -284,6 +285,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DoorTrigger (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3682562528444263300, guid: 74aa09e2bdd677541bc45c08ee7264cb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8122329224635226145, guid: 74aa09e2bdd677541bc45c08ee7264cb,
         type: 3}
@@ -350,6 +356,11 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 3208281042697259602}
+    - target: {fileID: 9213231458131685815, guid: 74aa09e2bdd677541bc45c08ee7264cb,
+        type: 3}
+      propertyPath: openHeight
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

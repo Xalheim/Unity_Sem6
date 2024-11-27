@@ -59,7 +59,7 @@ public class Arena : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!subarena && other.CompareTag("Player"))
+        if (!isActive && !subarena && other.CompareTag("Player"))
         {
             ActivateArena();
         }
@@ -101,7 +101,7 @@ public class Arena : MonoBehaviour
 
     private IEnumerator UnlockArenaDoors()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         for (int i = 0; i < doors.Length; i++)
         {
             doors[i].UnlockDoor();

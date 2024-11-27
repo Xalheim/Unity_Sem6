@@ -30,6 +30,10 @@ public class WeaponBase : MonoBehaviour
     [Tooltip("LayerMask for raycast enemy detection")]
     protected LayerMask enemyMask;
 
+    [SerializeField]
+    [Tooltip("Reference to Muzzle Flash")]
+    protected GameObject muzzleFlash;
+
     protected bool secondaryFire;
     private bool isShooting;
 
@@ -72,7 +76,9 @@ public class WeaponBase : MonoBehaviour
     IEnumerator WeaponDelay(float delay)
     {
         isShooting = true;
+        muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(delay);
+        muzzleFlash.SetActive(false);
         isShooting = false;
     }
 
@@ -92,6 +98,7 @@ public class WeaponBase : MonoBehaviour
         isShooting = false;
         secondaryFire = false;
         StopAllCoroutines();
+        muzzleFlash.SetActive(false);
         gameObject.SetActive(false);
     }
 }

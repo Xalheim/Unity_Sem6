@@ -32,6 +32,10 @@ public class PlayerInteraction : MonoBehaviour
     private LayerMask enemyMask;
 
     [SerializeField]
+    [Tooltip("Hand Reference")]
+    private GameObject hand;
+
+    [SerializeField]
     [Tooltip("List all available weapons")]
     private WeaponBase[] weapons;
 
@@ -45,6 +49,7 @@ public class PlayerInteraction : MonoBehaviour
     private WeaponBase activeWeapon;
     private bool grounded;
     public bool dashed;
+    private bool melee;
     private Vector3 move;
 
     public static PlayerInteraction instance;
@@ -82,25 +87,28 @@ public class PlayerInteraction : MonoBehaviour
 
     public void Melee(InputAction.CallbackContext context)
     {
-        Debug.Log("Melee!");
-        RaycastHit hit;
-        Vector3 position = Camera.main.transform.position;
-        Vector3 forward = Camera.main.transform.forward;
-
-        if (Physics.Raycast(position, forward, out hit, 2.5f, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
+        if (!melee)
         {
-            Debug.Log("Hit enemy for " + meleeDamage + " melee damage");
-            Debug.DrawRay(position, forward * 2.5f, Color.white, 5f);
+            StartCoroutine(MeleeCooldown());
+            RaycastHit hit;
+            Vector3 position = Camera.main.transform.position;
+            Vector3 forward = Camera.main.transform.forward;
 
-            if (hpManager != null)
+            if (Physics.Raycast(position, forward, out hit, 2.5f, enemyMask) && hit.collider.TryGetComponent<HealthManager>(out var hpManager))
             {
-                hpManager.ApplyDamage(meleeDamage);
+                Debug.Log("Hit enemy for " + meleeDamage + " melee damage");
+                Debug.DrawRay(position, forward * 2.5f, Color.white, 5f);
+
+                if (hpManager != null)
+                {
+                    hpManager.ApplyDamage(meleeDamage);
+                }
             }
-        }
-        else
-        {
-            Debug.Log("No enemy hit.");
-            Debug.DrawRay(position, forward * 2.5f, Color.red, 5f);
+            else
+            {
+                Debug.Log("No enemy hit with melee.");
+                Debug.DrawRay(position, forward * 2.5f, Color.red, 5f);
+            }
         }
     }
 
@@ -125,12 +133,24 @@ public class PlayerInteraction : MonoBehaviour
         movement = context.ReadValue<Vector2>();
     }
 
+    public void SwitchWeapon(InputAction.CallbackContext context, int weaponIndex) // TODO Create switches for each weapon
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            SwitchToWeapon(weaponIndex);
+        }
+    }
+
     public void SwitchToWeapon(int weaponIndex)
     {
         if (!PauseMenu.isGamePaused && VerifyWeaponPossession(weaponIndex))
         {
             if (activeWeapon != null)
             {
+                if (activeWeapon == weapons[weaponIndex])
+                {
+                    return;
+                }
                 activeWeapon.Deactivate();
             }
             activeWeapon = weapons[weaponIndex];
@@ -176,7 +196,16 @@ public class PlayerInteraction : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
-    private bool VerifyWeaponPossession(int weaponIndex)
+    private IEnumerator MeleeCooldown()
+    {
+        melee = true;
+        hand.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        hand.SetActive(false);
+        melee = false;
+    }
+
+    public bool VerifyWeaponPossession(int weaponIndex)
     {
         switch (weaponIndex)
         {
