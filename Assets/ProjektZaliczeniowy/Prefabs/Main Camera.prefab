@@ -183,6 +183,7 @@ GameObject:
   - component: {fileID: 3180412422042493809}
   - component: {fileID: 7762439220505160560}
   - component: {fileID: 4364877231814318847}
+  - component: {fileID: 5402774738155082991}
   m_Layer: 11
   m_Name: Hand
   m_TagString: Gun
@@ -255,6 +256,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &5402774738155082991
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177299673092290783}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dee1c2f4509b3304a8ef71598612e790, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1424996681853820248
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +462,7 @@ GameObject:
   - component: {fileID: 139340059899879045}
   - component: {fileID: 6049395261599733051}
   - component: {fileID: 21300097207271081}
+  - component: {fileID: 5641413559013937687}
   m_Layer: 11
   m_Name: Revolver
   m_TagString: Gun
@@ -534,6 +557,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   muzzleFlash: {fileID: 1641035588687740741}
+--- !u!95 &5641413559013937687
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892342865435509903}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4b236a4ec990ab8489d72a20ead39ad6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4596542303231952571
 GameObject:
   m_ObjectHideFlags: 0

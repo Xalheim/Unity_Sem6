@@ -85,6 +85,14 @@ public class PlayerInteraction : MonoBehaviour
     }
 
 
+    public void RestartLevel(InputAction.CallbackContext context)
+    {
+        if (PauseMenu.playerDied && PauseMenu.restartGame == false && context.phase == InputActionPhase.Performed)
+        {
+            PauseMenu.restartGame = true;
+        }
+    }
+
     public void Melee(InputAction.CallbackContext context)
     {
         if (!melee)

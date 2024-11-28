@@ -31,8 +31,8 @@ public class EnemyBase : MonoBehaviour
         if (transform.position.y <= 100)
         {
             HealthManager hpManager = GetComponent<HealthManager>();
-            hpManager.ApplyDamage(9999);
             EnemyKilled();
+            hpManager.ApplyDamage(9999);
         }
     }
 

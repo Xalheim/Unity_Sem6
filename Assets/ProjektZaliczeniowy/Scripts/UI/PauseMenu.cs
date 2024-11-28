@@ -11,23 +11,35 @@ public class PauseMenu : MonoBehaviour
     [Tooltip("Reference to Escape Menu Panel")]
     private GameObject pausePanel;
 
+    [SerializeField]
+    [Tooltip("Reference to Game Over Menu Panel")]
+    private GameObject deathPanel;
+
     public static bool isGamePaused = false;
+    public static bool playerDied = false;
+    public static bool restartGame = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update()
     {
+        if (restartGame)
+        {
+            restartGame = false;
+            playerDied = false;
+            pausePanel.SetActive(false);
+            isGamePaused = false;
 
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            deathPanel.SetActive(false);
+        }
+        if (playerDied && !deathPanel.activeSelf)
+        {
+            DeathScreenEnable();
+        }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void TogglePausePanel(InputAction.CallbackContext context)
     {
-        if (context.phase == InputActionPhase.Performed)
+        if (!playerDied && context.phase == InputActionPhase.Performed)
         {
             if (isGamePaused)
             {
@@ -56,6 +68,15 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+    public void DeathScreenEnable()
+    {
+        playerDied = true;
+        pausePanel.SetActive(false);
+        deathPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+
 
     public void ChangeScene(int level)
     {

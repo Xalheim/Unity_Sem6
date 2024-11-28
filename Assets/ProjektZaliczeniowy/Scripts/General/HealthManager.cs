@@ -63,8 +63,7 @@ public class HealthManager : MonoBehaviour
         PlayerInteraction.instance.StopRigidbodyVelocity();
         if (health <= damage)
         {
-            Debug.Log("PLAYER DIED, DO GAME OVER THING :)");
-            health = maximumHealth;
+            PauseMenu.playerDied = true;
         }
         else
         {

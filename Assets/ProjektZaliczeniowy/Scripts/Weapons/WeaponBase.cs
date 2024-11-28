@@ -36,9 +36,17 @@ public class WeaponBase : MonoBehaviour
 
     protected bool secondaryFire;
     private bool isShooting;
+    protected Animator animator;
 
-    
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
+    public void StopWeaponFiring()
+    {
+        animator.SetBool("triggerPulled", false);
+    }
     public void ChangeFireType(bool isSecondaryFire)
     {
         secondaryFire = isSecondaryFire;
@@ -63,12 +71,14 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void PrimaryFire()
     {
+        animator.SetBool("triggerPulled", true);
         Debug.Log("P");
         StartCoroutine(WeaponDelay(primaryDelay));
     }
 
     protected virtual void SecondaryFire()
     {
+        animator.SetBool("triggerPulled", true);
         Debug.Log("S");
         StartCoroutine(WeaponDelay(secondaryDelay));
     }

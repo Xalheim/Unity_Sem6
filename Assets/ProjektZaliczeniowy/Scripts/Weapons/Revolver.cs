@@ -48,4 +48,5 @@ public class Revolver : WeaponBase
             Debug.DrawRay(position, forward * range, Color.red, 1f);
         }
     }
+    
 }
