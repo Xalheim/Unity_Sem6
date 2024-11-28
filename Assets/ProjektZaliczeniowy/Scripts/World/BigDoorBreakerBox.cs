@@ -43,7 +43,10 @@ public class BigDoorBreakerBox : MonoBehaviour
                 bars[i].GetComponent<MeshRenderer>().material = disabledBreakerBox;
             }
             doorLight.GetComponent<MeshRenderer>().material = lightToggle;
-            GetComponent<ActivateArena>().CallArenaActivation();
+            if (TryGetComponent<ActivateArena>(out var arenaActivation))
+            {
+                arenaActivation.CallArenaActivation();
+            }
             enabled = false;
         }
     }
