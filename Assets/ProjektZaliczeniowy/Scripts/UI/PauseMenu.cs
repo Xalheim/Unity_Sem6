@@ -60,13 +60,10 @@ public class PauseMenu : MonoBehaviour
 
     public void DisablePausePanel()
     {
-        if (isGamePaused)
-        {
-            isGamePaused = false;
-            pausePanel.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1;
-        }
+        isGamePaused = false;
+        pausePanel.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1;
     }
 
     public void DeathScreenEnable()

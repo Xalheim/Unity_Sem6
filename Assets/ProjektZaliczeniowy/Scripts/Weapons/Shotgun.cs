@@ -12,10 +12,15 @@ public class Shotgun : WeaponBase
     private int chargeDamage;
     private float chargeSpread;
 
+    [SerializeField]
+    [Tooltip("Reference to sound of racking shotgun")]
+    protected AudioSource shotgunRackSFX;
+
     private Vector3 forwardOffset;
 
-    void Start()
+    override protected void Start()
     {
+        base.Start();
         chargeDamage = damage;
         chargeSpread = spread;
     }
@@ -84,5 +89,9 @@ public class Shotgun : WeaponBase
                 Debug.DrawRay(position, forwardOffset * range, Color.red, 1f);
             }
         }
+    }
+    public void PlayShotgunRack()
+    {
+        shotgunRackSFX.Play();
     }
 }

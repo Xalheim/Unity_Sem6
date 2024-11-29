@@ -5,6 +5,10 @@ using UnityEngine;
 public class GrenadeLauncher : WeaponBase
 {
     [SerializeField]
+    [Tooltip("Muzzle reference for projectile shooting origin")]
+    protected GameObject muzzle;
+
+    [SerializeField]
     [Tooltip("Speed of shot projectile")]
     protected int projectileSpeed;
 
@@ -20,7 +24,7 @@ public class GrenadeLauncher : WeaponBase
     {
         base.PrimaryFire();
 
-        var projectile = Instantiate(WorldManager.instance.projectile, transform.position, transform.rotation);
+        var projectile = Instantiate(WorldManager.instance.projectile, muzzle.transform.position, muzzle.transform.rotation);
         projectile.Initialize(damage, projectileSpeed, range, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.Grenade);
     }
 
@@ -32,16 +36,17 @@ public class GrenadeLauncher : WeaponBase
 
     private IEnumerator FireGrenadeBurst()
     {
-        var projectile = Instantiate(WorldManager.instance.projectile, transform.position, transform.rotation);
-        projectile.Initialize(secondaryDamage, projectileSpeed, range, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.Grenade);
-        
-        yield return new WaitForSeconds(0.1f);
-
-        projectile = Instantiate(WorldManager.instance.projectile, transform.position, transform.rotation);
+        var projectile = Instantiate(WorldManager.instance.projectile, muzzle.transform.position, muzzle.transform.rotation);
         projectile.Initialize(secondaryDamage, projectileSpeed, range, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.Grenade);
         yield return new WaitForSeconds(0.1f);
 
-        projectile = Instantiate(WorldManager.instance.projectile, transform.position, transform.rotation);
+        shootSFX.Play();
+        projectile = Instantiate(WorldManager.instance.projectile, muzzle.transform.position, muzzle.transform.rotation);
+        projectile.Initialize(secondaryDamage, projectileSpeed, range, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.Grenade);
+        yield return new WaitForSeconds(0.1f);
+
+        shootSFX.Play();
+        projectile = Instantiate(WorldManager.instance.projectile, muzzle.transform.position, muzzle.transform.rotation);
         projectile.Initialize(secondaryDamage, projectileSpeed, range, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.Grenade);
 
         yield return new WaitForSeconds(secondaryDelay);

@@ -29,6 +29,10 @@ public class ShootingEnemy : EnemyBase
     [Tooltip("Gun Reference")]
     protected GameObject gun;
 
+    [SerializeField]
+    [Tooltip("Shot SFX Reference")]
+    protected AudioSource shootSFX;
+
     private PlayerInteraction playerInt;
     private RaycastHit hit;
     
@@ -77,6 +81,8 @@ public class ShootingEnemy : EnemyBase
 
         var projectile = Instantiate(WorldManager.instance.projectile, gun.transform.position, gun.transform.rotation);
         projectile.Initialize(damage, projectileSpeed, range, projectilePushStrength, projectileMask, gun.transform.forward, ProjectileType.EnemyBullet);
+
+        //shootSFX.Play();
 
         isAttacking = false;
     }

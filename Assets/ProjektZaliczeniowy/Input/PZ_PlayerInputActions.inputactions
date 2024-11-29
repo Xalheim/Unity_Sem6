@@ -583,7 +583,7 @@
                 {
                     "name": "",
                     "id": "88b40bc6-d4b2-4c95-9f2a-dd6a4b2a33b8",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -606,6 +606,17 @@
                     "name": "",
                     "id": "19277849-0dba-45df-a40b-5e073f5a7184",
                     "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ResetLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "786d0235-acdf-4238-b299-4a6ce426aa33",
+                    "path": "<Gamepad>/select",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

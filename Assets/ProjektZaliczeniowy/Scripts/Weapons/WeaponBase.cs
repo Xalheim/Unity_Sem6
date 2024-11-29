@@ -31,14 +31,24 @@ public class WeaponBase : MonoBehaviour
     protected LayerMask enemyMask;
 
     [SerializeField]
-    [Tooltip("Reference to Muzzle Flash")]
-    protected GameObject muzzleFlash;
+    [Tooltip("Reference to Primary Muzzle Flash")]
+    protected GameObject muzzleFlashPrimary;
+
+    [SerializeField]
+    [Tooltip("Reference to Secondary Muzzle Flash")]
+    protected GameObject muzzleFlashSecondary;
+
+    [SerializeField]
+    [Tooltip("Reference to weapon shooting sound")]
+    protected AudioSource shootSFX;
 
     protected bool secondaryFire;
     private bool isShooting;
+
     protected Animator animator;
 
-    private void Start()
+
+    protected virtual void Start()
     {
         animator = GetComponent<Animator>();
     }
@@ -47,6 +57,17 @@ public class WeaponBase : MonoBehaviour
     {
         animator.SetBool("triggerPulled", false);
     }
+
+    public void StartUnholster()
+    {
+        animator.SetBool("readyToFire", false);
+    }
+
+    public void StopUnholster()
+    {
+        animator.SetBool("readyToFire", true);
+    }
+
     public void ChangeFireType(bool isSecondaryFire)
     {
         secondaryFire = isSecondaryFire;
@@ -71,25 +92,45 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void PrimaryFire()
     {
-        animator.SetBool("triggerPulled", true);
-        Debug.Log("P");
-        StartCoroutine(WeaponDelay(primaryDelay));
+        if (animator.GetBool("readyToFire"))
+        {
+            shootSFX.Play();
+            animator.SetBool("triggerPulled", true);
+            StartCoroutine(WeaponDelay(primaryDelay));
+            StartCoroutine(MuzzleFlashPrimary());
+        }
     }
 
     protected virtual void SecondaryFire()
     {
-        animator.SetBool("triggerPulled", true);
-        Debug.Log("S");
-        StartCoroutine(WeaponDelay(secondaryDelay));
+        if (animator.GetBool("readyToFire"))
+        {
+            shootSFX.Play();
+            animator.SetBool("triggerPulled", true);
+            StartCoroutine(WeaponDelay(secondaryDelay));
+            StartCoroutine(MuzzleFlashSecondary());
+        }
     }
 
     IEnumerator WeaponDelay(float delay)
     {
         isShooting = true;
-        muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(delay);
-        muzzleFlash.SetActive(false);
         isShooting = false;
+    }
+
+    IEnumerator MuzzleFlashPrimary()
+    {
+        muzzleFlashPrimary.SetActive(true);
+        yield return new WaitForSeconds(0.05f);
+        muzzleFlashPrimary.SetActive(false);
+    }
+
+    IEnumerator MuzzleFlashSecondary()
+    {
+        muzzleFlashSecondary.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        muzzleFlashSecondary.SetActive(false);
     }
 
     // TODO Fix cooldown breaking when switching weapons during a Coroutine
@@ -108,7 +149,15 @@ public class WeaponBase : MonoBehaviour
         isShooting = false;
         secondaryFire = false;
         StopAllCoroutines();
-        muzzleFlash.SetActive(false);
+        StopWeaponFiring();
+        muzzleFlashPrimary.SetActive(false);
+        muzzleFlashSecondary.SetActive(false);
+        animator.SetBool("readyToFire", false);
         gameObject.SetActive(false);
+    }
+
+    public bool IsShooting()
+    {
+        return isShooting;
     }
 }

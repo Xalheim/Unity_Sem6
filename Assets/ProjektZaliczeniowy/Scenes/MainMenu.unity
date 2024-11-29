@@ -1789,7 +1789,7 @@ MonoBehaviour:
     tutorials:</b></color> </size></align>\n<b> <color=#DD9977>Brackeys:</b></color>
     Camera Tutorial\n<color=#DD7777><link=\"https://www.youtube.com/watch?v=_QajrabyTJc\">YT@Brackeys</link></color>\n<b>
     <color=#DD9977>Sebastian Lague:</b></color> Modeling in Blender for Unity\n<color=#DD7777><link=\"https://www.youtube.com/playlist?list=PLFt_AvWsXl0djuNM22htmz3BUtHHtOh7v\">YT@SebastianLague</link></color>\n\n<align=center><size=60><color=#aaffaa>SFX:</b></color>
-    </size></align>\n<b> <color=#DD9977>SampleText</b></color> SampleText\n<color=#DD7777><link=\"google.com\">SFX@Site</link></color>\n\n\n"
+    </size></align>\n<b> <color=#DD9977>Weapon SFX:</b></color> Freesound.org\n<color=#DD7777><link=\"https://freesound.org/\">@freesound.org</link></color>\n\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}

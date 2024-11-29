@@ -8619,11 +8619,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6745434267821460652, guid: 63846d9c1bdd211479218e34d0215746,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8789,16 +8784,6 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[24].m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 996150965}
-    - target: {fileID: 1443810215729552887, guid: ce759538227c6224b8479b2f0f01ef5a,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnMouseMove
-      objectReference: {fileID: 0}
-    - target: {fileID: 1443810215729552887, guid: ce759538227c6224b8479b2f0f01ef5a,
-        type: 3}
-      propertyPath: m_ActionEvents.Array.data[24].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TogglePausePanel
-      objectReference: {fileID: 0}
     - target: {fileID: 6007822297296157726, guid: ce759538227c6224b8479b2f0f01ef5a,
         type: 3}
       propertyPath: m_Name
@@ -8884,11 +8869,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7729245609331984433, guid: ce759538227c6224b8479b2f0f01ef5a,
-        type: 3}
-      propertyPath: settingsManager
-      value: 
-      objectReference: {fileID: 2022788467}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

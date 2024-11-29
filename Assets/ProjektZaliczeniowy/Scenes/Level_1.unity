@@ -96,8 +96,10 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 7b90d4fc3c6aeca4483b46436c393937,
+    type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 491aecf28cb9bab4aa204a0de8d5345f,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4148,18 +4150,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 710de33074c893749a6bb2851bcb7f47, type: 3}
---- !u!114 &239304575 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2977565718289589221, guid: 13d71ff72fa7ae7439fa930f47669a2e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4154785477827791651}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c4bbcb96fb3294d99458bd912b599d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &240770721
 GameObject:
   m_ObjectHideFlags: 0
@@ -5032,51 +5022,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 323475013}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &334883367
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 334883368}
-  - component: {fileID: 334883369}
-  m_Layer: 0
-  m_Name: EnemySpawner (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &334883368
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334883367}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 109407875}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &334883369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 334883367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c4bbcb96fb3294d99458bd912b599d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 6800457572907115057, guid: 622ae4adf8beced4084efc4dc27e7725, type: 3}
 --- !u!1 &343820169
 GameObject:
   m_ObjectHideFlags: 0
@@ -9915,51 +9860,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 776909224}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &813291347
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 813291348}
-  - component: {fileID: 813291349}
-  m_Layer: 0
-  m_Name: EnemySpawner (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &813291348
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813291347}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12, y: 6, z: -11.76}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 929659976}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &813291349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813291347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c4bbcb96fb3294d99458bd912b599d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy: {fileID: 7347143830296617063, guid: 86d80e483f4f23940a438f589d066e5d, type: 3}
 --- !u!1 &815871327
 GameObject:
   m_ObjectHideFlags: 0
@@ -11903,28 +11803,28 @@ PrefabInstance:
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[0]
       value: 
-      objectReference: {fileID: 1578544004}
+      objectReference: {fileID: 1747324062}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[1]
       value: 
-      objectReference: {fileID: 1747324062}
+      objectReference: {fileID: 1794252855}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[2]
       value: 
-      objectReference: {fileID: 1794252855}
+      objectReference: {fileID: 0}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[3]
       value: 
-      objectReference: {fileID: 813291349}
+      objectReference: {fileID: 0}
     - target: {fileID: 5921536155117044847, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: m_Name
@@ -11946,7 +11846,8 @@ PrefabInstance:
       value: -10.76
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3071445567467848546, guid: 13d71ff72fa7ae7439fa930f47669a2e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1526211790799112604, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
@@ -11956,10 +11857,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1794252854}
-    - targetCorrespondingSourceObject: {fileID: 1526211790799112604, guid: 13d71ff72fa7ae7439fa930f47669a2e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 813291348}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13d71ff72fa7ae7439fa930f47669a2e, type: 3}
 --- !u!4 &929659976 stripped
@@ -18720,13 +18617,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1562749658}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.6405146, y: -3.5233, z: -18.858011}
+  m_LocalRotation: {x: -0, y: -0.0035471013, z: -0, w: 0.9999937}
+  m_LocalPosition: {x: 3.668467, y: -3.5233, z: -19.509657}
   m_LocalScale: {x: 1, y: 1.8986, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1595020091}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.406, z: 0}
 --- !u!64 &1562749660
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19075,18 +18972,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &1578544004 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2977565718289589221, guid: 13d71ff72fa7ae7439fa930f47669a2e,
-    type: 3}
-  m_PrefabInstance: {fileID: 929659975}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4c4bbcb96fb3294d99458bd912b599d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1595020090
 GameObject:
   m_ObjectHideFlags: 0
@@ -27601,28 +27486,28 @@ PrefabInstance:
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.size
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[0]
       value: 
-      objectReference: {fileID: 239304575}
+      objectReference: {fileID: 1761448934}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[1]
       value: 
-      objectReference: {fileID: 1761448934}
+      objectReference: {fileID: 1841855364}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[2]
       value: 
-      objectReference: {fileID: 334883369}
+      objectReference: {fileID: 0}
     - target: {fileID: 4922199144731553850, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: enemySpawners.Array.data[3]
       value: 
-      objectReference: {fileID: 1841855364}
+      objectReference: {fileID: 0}
     - target: {fileID: 5921536155117044847, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       propertyPath: m_Name
@@ -27639,16 +27524,13 @@ PrefabInstance:
       value: 4.9999967
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3071445567467848546, guid: 13d71ff72fa7ae7439fa930f47669a2e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1526211790799112604, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1761448933}
-    - targetCorrespondingSourceObject: {fileID: 1526211790799112604, guid: 13d71ff72fa7ae7439fa930f47669a2e,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 334883368}
     - targetCorrespondingSourceObject: {fileID: 1526211790799112604, guid: 13d71ff72fa7ae7439fa930f47669a2e,
         type: 3}
       insertIndex: -1

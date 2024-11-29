@@ -141,7 +141,7 @@ public class PlayerInteraction : MonoBehaviour
         movement = context.ReadValue<Vector2>();
     }
 
-    public void SwitchWeapon(InputAction.CallbackContext context, int weaponIndex) // TODO Create switches for each weapon
+    public void SwitchWeapon(InputAction.CallbackContext context, int weaponIndex)
     {
         if (context.phase == InputActionPhase.Performed)
         {

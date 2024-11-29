@@ -59,6 +59,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log(collision.GetType());
         if (collision.gameObject.GetComponent<Projectile>())
         {
             return;

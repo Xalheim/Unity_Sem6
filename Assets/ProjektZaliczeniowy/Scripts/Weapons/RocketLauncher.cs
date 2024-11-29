@@ -5,6 +5,10 @@ using UnityEngine;
 public class RocketLauncher : WeaponBase
 {
     [SerializeField]
+    [Tooltip("Muzzle reference for projectile shooting origin")]
+    protected GameObject muzzle;
+
+    [SerializeField]
     [Tooltip("Speed of shot projectile")]
     protected int projectileSpeed;
 
@@ -20,7 +24,7 @@ public class RocketLauncher : WeaponBase
     {
         base.PrimaryFire();
 
-        var projectile = Instantiate(WorldManager.instance.projectile, transform.position, transform.rotation);
+        var projectile = Instantiate(WorldManager.instance.projectile, muzzle.transform.position, muzzle.transform.rotation);
         projectile.Initialize(damage, projectileSpeed, range, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.Rocket);
     }
 
@@ -28,7 +32,7 @@ public class RocketLauncher : WeaponBase
     {
         base.SecondaryFire();
         int slowSpeed = projectileSpeed / 3;
-        var projectile = Instantiate(WorldManager.instance.projectile, transform.position, transform.rotation);
+        var projectile = Instantiate(WorldManager.instance.projectile, muzzle.transform.position, muzzle.transform.rotation);
         projectile.Initialize(secondaryDamage, slowSpeed, range * 2, projectilePushStrength, projectileMask, Camera.main.transform.forward, ProjectileType.PlasmaRocket);
     }
 }
