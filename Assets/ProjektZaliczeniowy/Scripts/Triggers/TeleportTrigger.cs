@@ -13,12 +13,11 @@ public class Teleport : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.transform.position = teleportVector;
             if (other.TryGetComponent<HealthManager>(out var healthManager))
             {
-                healthManager.ApplyDamage(25);
+                healthManager.ApplyDamage(10);
             }
-            Debug.Log("Colliding");
-            other.transform.position = teleportVector;
         }
     }
 }

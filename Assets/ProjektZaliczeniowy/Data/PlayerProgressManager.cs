@@ -23,11 +23,11 @@ public class PlayerProgressManager : MonoBehaviour
     }
     public void UnlockGrenadeLauncher()
     {
-        playerProgress.hasShotgun = true;
+        playerProgress.hasGrenadeLauncher = true;
     }
     public void UnlockRocketLauncher()
     {
-        playerProgress.hasShotgun = true;
+        playerProgress.hasRocketLauncher = true;
     }
 
     public void LockRevolver()
@@ -41,11 +41,11 @@ public class PlayerProgressManager : MonoBehaviour
     }
     public void LockGrenadeLauncher()
     {
-        playerProgress.hasShotgun = false;
+        playerProgress.hasGrenadeLauncher = false;
     }
     public void LockRocketLauncher()
     {
-        playerProgress.hasShotgun = false;
+        playerProgress.hasRocketLauncher = false;
     }
 
 }

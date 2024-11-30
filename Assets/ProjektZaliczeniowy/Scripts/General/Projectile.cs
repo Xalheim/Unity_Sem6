@@ -69,7 +69,7 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager) && !hpManager.IsPlayer())
             {
-                Debug.Log("Direct hit");
+                //Debug.Log("Direct hit");
                 hpManager.ApplyDamage(damage);
             }
             AoeDamage();
@@ -79,7 +79,7 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager) && !hpManager.IsPlayer())
             {
-                Debug.Log("Direct hit");
+                //Debug.Log("Direct hit");
                 hpManager.ApplyDamage(damage);
                 AoeDamage();
             }
@@ -94,7 +94,7 @@ public class Projectile : MonoBehaviour
         {
             if (collision.gameObject.TryGetComponent<HealthManager>(out var hpManager) && hpManager.IsPlayer())
             {
-                Debug.Log("Enemy hit player with a bullet for " + damage + " damage");
+                //Debug.Log("Enemy hit player with a bullet for " + damage + " damage");
                 hpManager.ApplyDamage(damage);
             }
             Destroy(gameObject);
@@ -126,7 +126,7 @@ public class Projectile : MonoBehaviour
                 {
                     Vector3 pushVector = (current.transform.position - transform.position).normalized * pushStrength;
                     rb.AddForce(pushVector);
-                    Debug.Log(pushVector);
+                    //Debug.Log(pushVector);
                 }
 
             }

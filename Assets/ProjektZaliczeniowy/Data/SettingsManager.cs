@@ -13,6 +13,11 @@ public class SettingsManager : MonoBehaviour
     {
         settings.sensitivity = sensitivity;
     }
-    
+
+    public float GetSensitivity()
+    {
+        return settings.sensitivity;
+    }
+
 
 }

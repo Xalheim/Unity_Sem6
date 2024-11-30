@@ -76,8 +76,8 @@ public class ShootingEnemy : EnemyBase
         isAttacking = true;
         yield return new WaitForSeconds(1f);
 
-        Debug.Log("Fired projectile");
-        Debug.DrawRay(gunPosition, enemyToPlayerVector * 100f, Color.white, 1f);
+        //Debug.Log("Fired projectile");
+        //Debug.DrawRay(gunPosition, enemyToPlayerVector * 100f, Color.white, 1f);
 
         var projectile = Instantiate(WorldManager.instance.projectile, gun.transform.position, gun.transform.rotation);
         projectile.Initialize(damage, projectileSpeed, range, projectilePushStrength, projectileMask, gun.transform.forward, ProjectileType.EnemyBullet);

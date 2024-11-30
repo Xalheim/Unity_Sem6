@@ -18,48 +18,41 @@ public class Arena : MonoBehaviour
     [Tooltip("Create lists of door references")]
     private DoorController[] doors;
 
+    private bool subarena;
+
     private bool isActive;
-    private bool used;
     private bool completed;
 
     private int aliveEnemies;
-    private bool subarena;
 
+    private void Start()
+    {
+        if (nextArena != null)
+        {
+            nextArena.SetSubArena();
+        }
+    }
 
     void Update()
     {
-        if (isActive && !used)
+        if (isActive && aliveEnemies <= 0 && !completed)
         {
-            for (int i = 0; i < doors.Length; i++)
+            completed = true;
+            isActive = false;
+            if (nextArena != null)
             {
-                doors[i].LockDoor();
-            }
-            for (int i = 0; i < enemySpawners.Length; i++)
-            {
-                enemySpawners[i].SpawnEnemy();
-            }
-            used = true;
-        }
-
-        if (used && aliveEnemies <= 0 && !completed)
-        {
-            if (nextArena)
-            {
-                isActive = false;
                 StartCoroutine(ActivateSubarena());
             }
             else
             {
                 StartCoroutine(UnlockArenaDoors());
             }
-            isActive = false;
-            completed = true;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!isActive && !subarena && other.CompareTag("Player"))
+        if (!completed && !subarena && !isActive && other.CompareTag("Player"))
         {
             ActivateArena();
         }
@@ -68,24 +61,22 @@ public class Arena : MonoBehaviour
     public void ActivateArena()
     {
         activeArena = this;
-        if (nextArena)
-        {
-            nextArena.SetSubArena();
-        }
         isActive = true;
         aliveEnemies = enemySpawners.Length;
-    }
-
-    private void ResetArena()
-    {
-        used = false;
-        isActive = false;
+        for (int i = 0; i < doors.Length; i++)
+        {
+            doors[i].LockDoor();
+        }
+        for (int i = 0; i < enemySpawners.Length; i++)
+        {
+            enemySpawners[i].SpawnEnemy();
+        }
     }
 
     public void EnemyKilled()
     {
         aliveEnemies--;
-        Debug.Log("ENEMY KILLED, current amount: " + aliveEnemies);
+        //Debug.Log("ENEMY KILLED, current amount: " + aliveEnemies);
     }
 
     public void SetSubArena()

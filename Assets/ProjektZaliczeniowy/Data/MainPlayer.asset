@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: MainPlayer
   m_EditorClassIdentifier: 
   hasRevolver: 1
-  hasShotgun: 1
-  hasGrenadeLauncher: 1
-  hasRocketLauncher: 1
+  hasShotgun: 0
+  hasGrenadeLauncher: 0
+  hasRocketLauncher: 0

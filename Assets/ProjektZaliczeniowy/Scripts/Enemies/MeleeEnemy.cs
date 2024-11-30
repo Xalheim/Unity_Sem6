@@ -41,17 +41,18 @@ public class MeleeEnemy : EnemyBase
 
         if (Physics.Raycast(gunPosition, enemyToPlayerVector, out hit, 4.5f) && hit.collider.TryGetComponent<HealthManager>(out var hpManager) && hpManager.IsPlayer())
         {
-            Debug.Log("Hit player for " + damage + "damage");
-            Debug.DrawRay(gunPosition, enemyToPlayerVector * 4.5f, Color.white, 1f);
+            //Debug.Log("Hit player for " + damage + "damage");
+            //Debug.DrawRay(gunPosition, enemyToPlayerVector * 4.5f, Color.white, 1f);
 
             hpManager.ApplyDamage(damage);
 
         }
         else
         {
-            Debug.Log("Enemy attack missed.");
-            Debug.DrawRay(gunPosition, enemyToPlayerVector * 4.5f, Color.red, 1f);
+            //Debug.Log("Enemy attack missed.");
+            //Debug.DrawRay(gunPosition, enemyToPlayerVector * 4.5f, Color.red, 1f);
         }
+        yield return new WaitForSeconds(2.5f);
         isAttacking = false;
     }
 }
