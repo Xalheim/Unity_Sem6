@@ -77,6 +77,12 @@ public class PauseMenu : MonoBehaviour
 
     public void ChangeScene(int level)
     {
+        if (isGamePaused)
+        {
+            isGamePaused = false;
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
+        }
         SceneManager.LoadScene(level);
     }
 
